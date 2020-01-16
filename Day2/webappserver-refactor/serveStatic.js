@@ -8,19 +8,25 @@ function isStatic(resourceName) {
     return staticResExtns.indexOf(resExtn) >= 0;
 }
 
-module.exports = function(req, res){
+module.exports = function(req, res, next){
     const resourceName = req.urlObj.pathname === '/' ? '/index.html' : req.urlObj.pathname;
     if (isStatic(resourceName)) {
         const resourcePath = path.join(__dirname, resourceName);
-        console.log(resourcePath);
         if (!fs.existsSync(resourcePath)) {
             res.statusCode = 404;
             res.end();
             return;
         }
-        //fs.createReadStream(resourcePath).pipe(res); - This is ready asynchronous
-        const fileContent=fs.readFileSync(resourcePath,{encoding:'utf8'});
-        res.write(fileContent);
-        res.end();
-    } 
+        const stream = fs.createReadStream(resourcePath).pipe(res);
+        stream.on('end', _ => next());
+        /* const stream = fs.createReadStream(resourcePath);
+        stream.on('data', chunk => res.write(chunk));
+        stream.on('end',_ => res.end()); */
+
+        /* const fileContents = fs.readFileSync(resourcePath);
+        res.write(fileContents);
+        res.end(); */
+    } else {
+        next();
+    }
 }
