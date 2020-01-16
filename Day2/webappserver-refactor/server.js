@@ -4,7 +4,7 @@ const http = require('http'),
     serveCalculator = require('./serveCalculator'),
     notFoundHandler = require('./notFoundHandler'),
     app = require('./app'),
-    port = 8080;
+    port = 8085;
 
 app.use(dataParser);
 app.use(serveStatic);
