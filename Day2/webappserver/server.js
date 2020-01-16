@@ -27,16 +27,26 @@ const server = http.createServer((req, res) => {
         fs.createReadStream(resourcePath).pipe(res);
     } else if (urlObj.pathname === '/calculator'){
         if (req.method === 'GET') {
-           
-            const result = serveCalc.handleCalculator(urlObj.query);
+            const query = querystring.parse(urlObj.query);
+            const op = query.op,
+                x = parseInt(query.x),
+                y = parseInt(query.y);
+            console.log(op, x, y);
+            const result = calculator[op](x, y);
 
             res.write(result.toString());
             res.end();
         } else {
             let rawData = '';
             req.on('data', chunk => rawData += chunk);
-            req.on('end', () => {                               
-                const result = serveCalc.handleCalculator(rawData);
+            req.on('end', () => {
+                console.log(rawData);
+                const body = querystring.parse(rawData);
+                const op = body.op,
+                    x = parseInt(body.x),
+                    y = parseInt(body.y);
+                console.log(op, x, y);
+                const result = calculator[op](x, y);
                 res.write(result.toString());
                 res.end();
             })
