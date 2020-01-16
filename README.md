@@ -1,4 +1,4 @@
-# GraphQL
+# Node Js Example
 This contains few example related to Node Js and Graph Ql
 Node Js Examples
 1. Hellow World - Simple printing to console
@@ -8,5 +8,8 @@ Node Js Examples
 5. es6js - simple example of es6
 6 printFile - simple example of printing file using nodejs
 
-#ExpressExample
+# ExpressExample
+This folder contains some of the example created by using express install with hbs options
 
+# GraphQL Example
+This will contains all the samples of Graphql
