@@ -21,4 +21,20 @@ router.get('/:id', (req, res, next) => {
     }
 });
 
+router.put('/:id',function(req,res,next){
+    const taskId=parseInt(req.param.id);
+    const resultTask=taskList.find(t=>t.id==taskId);
+    if(!resultTask)
+    {
+        const newId={id:taskId,name:'Dhiraj Kumar',isCompleted:false};
+        taskList.join(newId);
+        res.write('Added');
+        res.end();
+    }
+    else
+    {
+        createError(404);
+    }
+});
+
 module.exports = router;
