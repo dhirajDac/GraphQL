@@ -22,3 +22,11 @@ Steps to configure this.
 5. Now go to browser and browse http://localhost:3000 (it shows on command prompt). It will show you the GraphQL with help of which you can query the data.
 # Apollo Server client Example
 This will contains all the sample of how to configure appollow server configuration and working.
+
+# Rest Service Expose using Json
+Steps to configure this.
+1. Go to either command prompt or node command
+2. Go to the folder where you have created json file 
+3. Go to the path and type # npm install json-server -g 
+4. after finish of step 3, type json-server data.js -p 4000
+5. Now go to browser and browse http://localhost:4000 (it shows on command prompt). It will show you the GraphQL with help of which you can query the data.
