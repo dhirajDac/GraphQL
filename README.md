@@ -12,4 +12,13 @@ Node Js Examples
 This folder contains some of the example created by using express install with hbs options
 
 # GraphQL Example
-This will contains all the samples of Graphql
+This will contains all the samples of Graphql . Like how to use alias, directive, query, fragment, pagination, mutation.
+here I am using json-graphql-server for querying the json file.
+Steps to configure this.
+1. Go to either command prompt or node command
+2. Go to the folder where you have created json file 
+3. Go to the path and type # npm install json-graphql-server -g 
+4. after finish of step 3, type json-graphql-server data.js
+5. Now go to browser and browse http://localhost:3000 (it shows on command prompt). It will show you the GraphQL with help of which you can query the data.
+# Apollo Server client Example
+This will contains all the sample of how to configure appollow server configuration and working.
