@@ -30,3 +30,9 @@ Steps to configure this.
 3. Go to the path and type # npm install json-server -g 
 4. after finish of step 3, type json-server data.js -p 4000
 5. Now go to browser and browse http://localhost:4000 (it shows on command prompt). It will show you the GraphQL with help of which you can query the data.
+
+# React-App
+This is used for making client for consuming apollo server rest api calls.
+npm install create-react-app -g
+npm start
+In paraller start the graphql server and rest api
