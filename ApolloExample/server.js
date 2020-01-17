@@ -1,6 +1,8 @@
 const express = require('express'),
     apolloServerExpress = require('apollo-server-express'),
+    axios = require('axios'),
     gql = apolloServerExpress.gql;
+
 
 const app = express();
 
@@ -25,11 +27,17 @@ const schema = gql`
         name : String,
         products : [Product]
     }
+    type User{
+        id : ID!,
+        name : String,
+        isActive : Boolean
+    }
     type Query {
         hello(name : String) : String,
         getProducts : [Product],
         getProductsById(id : ID!) : Product,
-        getCategories : [Category]
+        getCategories : [Category],
+        getUsers : [User]
     }
     type Mutation{
         addProduct(id : ID!, name : String, cost : Int, units : Int, inStock : Boolean) : Product,
@@ -63,6 +71,10 @@ const resolvers = {
         },
         getCategories : (parent, args) => {
             return categoryList;
+        },
+        getUsers : async (parent, args) => {
+            const response = await axios.get('http://localhost:4000/users')
+            return response.data;
         }
     },
     Mutation : {
